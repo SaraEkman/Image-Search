@@ -1,0 +1,13 @@
+[
+   {
+    "user": "admin",
+    "favoriteImages": [
+        {
+            "title": "Image 1",
+            "byteSize": "1000",
+            "url": "http://www.google.com"
+
+        }
+    ]
+   }
+]
