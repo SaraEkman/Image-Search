@@ -1,13 +1,32 @@
 [
-   {
+  {
     "user": "admin",
     "favoriteImages": [
-        {
-            "title": "Image 1",
-            "byteSize": "1000",
-            "url": "http://www.google.com"
-
-        }
-    ]
-   }
+      {
+        "title": "ImageOne",
+        "byteSize": "1030",
+        "url": "http://www.google.com",
+        "id": 8706
+      },
+      {
+        "title": "Image three",
+        "byteSize": "2220",
+        "url": "http://www.google.com",
+        "id": 6735
+      }
+    ],
+    "id": 619
+  },
+  {
+    "user": "Sara",
+    "favoriteImages": [
+      {
+        "title": "ImageOne",
+        "byteSize": "1030",
+        "url": "http://www.google.com",
+        "id": 7751
+      }
+    ],
+    "id": 1768
+  }
 ]

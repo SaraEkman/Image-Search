@@ -1,1 +1,36 @@
 GET http://localhost:3000/users
+
+###
+# Create a new user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "user": "admin",
+    "favoriteImages": [
+      {
+        "title": "ImageOne",
+        "byteSize": "1030",
+        "url": "http://www.google.com"
+      }
+    ]
+}
+
+
+###
+GET http://localhost:3000/users/619
+
+
+###
+PUT http://localhost:3000/users/619
+Content-Type: application/json
+    
+ {
+    "title": "Image three",
+    "byteSize": "2220",
+    "url": "http://www.google.com"
+}
+    
+### 
+
+DELETE http://localhost:3000/users/619/5257
