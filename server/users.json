@@ -13,6 +13,12 @@
         "byteSize": "2220",
         "url": "http://www.google.com",
         "id": 6735
+      },
+      {
+        "title": "Image three",
+        "byteSize": "2220",
+        "url": "http://www.google.com",
+        "id": 7741
       }
     ],
     "id": 619
@@ -28,5 +34,28 @@
       }
     ],
     "id": 1768
+  },
+  {
+    "user": "SaraEkman",
+    "favoriteImages": [
+      {
+        "title": "Image one",
+        "byteSize": "1234",
+        "url": "https://image-processor-storage.s3.us-west-2.amazonaws.com/images/3cf61c1011912a2173ea4dfa260f1108/halo-of-neon-ring-illuminated-in-the-stunning-landscape-of-yosemite.jpg",
+        "id": 8989
+      },
+      {
+        "title": "Image two",
+        "byteSize": "1234",
+        "url": "https://cc-prod.scene7.com/is/image/CCProdAuthor/adobe-firefly-marquee-text-to-image-0-desktop-1000x1000?$pjpeg$&jpegSize=300&wid=1000",
+        "id": 9579
+      }
+    ],
+    "id": 3194
+  },
+  {
+    "user": "sara.ekmanmedieinstitutet",
+    "favoriteImages": [],
+    "id": 4931
   }
 ]

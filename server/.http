@@ -6,13 +6,13 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "user": "admin",
+    "user": "SaraEkman",
     "favoriteImages": [
-      {
-        "title": "ImageOne",
-        "byteSize": "1030",
-        "url": "http://www.google.com"
-      }
+        {
+            "title": "Image one",
+            "byteSize": "1234",
+            "url": "https://image-processor-storage.s3.us-west-2.amazonaws.com/images/3cf61c1011912a2173ea4dfa260f1108/halo-of-neon-ring-illuminated-in-the-stunning-landscape-of-yosemite.jpg"
+        }
     ]
 }
 
@@ -22,13 +22,13 @@ GET http://localhost:3000/users/619
 
 
 ###
-PUT http://localhost:3000/users/619
+PUT http://localhost:3000/users/3194
 Content-Type: application/json
     
- {
-    "title": "Image three",
-    "byteSize": "2220",
-    "url": "http://www.google.com"
+  {
+    "title": "Image two",
+    "byteSize": "1234",
+    "url": "https://cc-prod.scene7.com/is/image/CCProdAuthor/adobe-firefly-marquee-text-to-image-0-desktop-1000x1000?$pjpeg$&jpegSize=300&wid=1000"
 }
     
 ### 

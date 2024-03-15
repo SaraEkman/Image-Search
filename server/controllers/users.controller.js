@@ -16,17 +16,36 @@ const getUsers = async (req, res, next) => {
 };
 
 const addUser = async (req, res, next) => {
+    console.log(req.body);
     try {
         const data = await fs.readFile(DATA_FILE, 'utf8');
         const users = JSON.parse(data);
 
-        if (users.find(user => user.user === req.body.user)) {
-            res.status(400).send('User already exists');
-            return;
+        const existingUser = users.find(user => user.user === req.body.user);
+
+        if (existingUser) {
+            console.log('User already exists');
+            if (req.body.favoriteImages) {
+                const favoriteImagesWithIds = req.body.favoriteImages.map(image => ({
+                    ...image,
+                    id: generateRandomId(),
+                }));
+                existingUser.favoriteImages = [...existingUser.favoriteImages, ...favoriteImagesWithIds];
+            }
+            return res.status(200).json(
+                {
+                    user: existingUser.user,
+                    id: existingUser.id,
+                    favoriteImages: existingUser.favoriteImages,
+                }
+            );
         }
 
         const userId = generateRandomId();
 
+        if (!req.body.favoriteImages) {
+            req.body.favoriteImages = [];
+        }
         const favoriteImagesWithIds = req.body.favoriteImages.map(image => ({
             ...image,
             id: generateRandomId(),
@@ -38,7 +57,7 @@ const addUser = async (req, res, next) => {
 
         const addData = await fs.writeFile(DATA_FILE, JSON.stringify(users, null, 2), 'utf8');
 
-        res.status(201).json(newUser);
+        res.status(200).json(newUser);
 
     } catch (error) {
         console.error('Error reading the file:', error);
@@ -54,11 +73,11 @@ const getFavoriteImagesById = async (req, res, next) => {
         const user = users.find(user => user.id === parseInt(req.params.id));
 
         if (!user) {
-            res.status(404).send('User not found');
+            res.status(400).send('User not found');
             return;
         }
 
-        res.status(201).json(user);
+        res.status(200).json(user);
 
     } catch (e) {
         console.error('Error reading the file:', error);
@@ -74,10 +93,10 @@ const addImagesToUser = async (req, res, next) => {
         const userIndex = users.findIndex(user => user.id === parseInt(req.params.id));
 
         if (userIndex === -1) {
-            res.status(404).send(`User ${req.params.id} not found.`);
+            res.status(400).send(`User ${req.params.id} not found.`);
             return;
         }
-        
+
         const imageId = generateRandomId();
 
         const newImage = { ...req.body, id: imageId };
@@ -101,7 +120,7 @@ const deleteImageFromUser = async (req, res, next) => {
         const userIndex = users.findIndex(user => user.id === parseInt(req.params.userId));
 
         if (userIndex === -1) {
-            res.status(404).send(`User with ID ${req.params.userId} not found.`);
+            res.status(400).send(`User with ID ${req.params.userId} not found.`);
             return;
         }
 
