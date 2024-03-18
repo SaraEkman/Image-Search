@@ -12,7 +12,7 @@ GET http://localhost:3000/users/619
 
 
 ###
-PUT http://localhost:3000/users/1866
+POST http://localhost:3000/users/1866
 Content-Type: application/json
     
   {

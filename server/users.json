@@ -49,6 +49,18 @@
         "byteSize": "1234",
         "url": "https://cc-prod.scene7.com/is/image/CCProdAuthor/adobe-firefly-marquee-text-to-image-0-desktop-1000x1000?$pjpeg$&jpegSize=300&wid=1000",
         "id": 9579
+      },
+      {
+        "title": "Let's Enhance: Image quality AI - make photos HD/4k & more online",
+        "byteSize": 86771,
+        "url": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
+        "id": 2331
+      },
+      {
+        "title": "What is Image Processing? Everything you need to Know!",
+        "byteSize": 72202,
+        "url": "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
+        "id": 2165
       }
     ],
     "id": 3194
@@ -67,6 +79,12 @@
         "byteSize": "1234",
         "url": "https://cc-prod.scene7.com/is/image/CCProdAuthor/adobe-firefly-marquee-text-to-image-0-desktop-1000x1000?$pjpeg$&jpegSize=300&wid=1000",
         "id": 897
+      },
+      {
+        "title": "Image two",
+        "byteSize": "1234",
+        "url": "https://cc-prod.scene7.com/is/image/CCProdAuthor/adobe-firefly-marquee-text-to-image-0-desktop-1000x1000?$pjpeg$&jpegSize=300&wid=1000",
+        "id": 8111
       }
     ]
   }

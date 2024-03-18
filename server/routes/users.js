@@ -9,7 +9,7 @@ const { imageSchema } = require('../schemas/image.schema');
 /* GET users listing. */
 router.post('/', validate(userSchema), addUser);
 router.get('/:id', getFavoriteImagesById);
-router.put('/:id', validate(imageSchema), addImagesToUser);
+router.post('/:id', validate(imageSchema), addImagesToUser);
 router.delete('/:userId/:imageId', deleteImageFromUser);
 
 module.exports = router;
