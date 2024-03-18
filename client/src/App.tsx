@@ -55,7 +55,6 @@ export const App = () => {
   const [showImages, setShowImages] = useState<boolean>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setSearchTerm(e.target.value);
   };
 
@@ -90,8 +89,6 @@ export const App = () => {
     }
   }, [isAuthenticated])
   
-  console.log(userImages);
-
   const handleSearch = async () => {
     setShowImages(false);
     console.log(searchTerm);
@@ -99,7 +96,6 @@ export const App = () => {
       `https://www.googleapis.com/customsearch/v1?key=AIzaSyAi5H0AVPmBxEKbHsnhyYoLPk9WJDgnzWM&cx=41d558085ddf341b5&num=10&searchType=image&q=${searchTerm}`
     );
     const data = await res.json();
-    console.log(data);
     setSearchResults((prv) => {
       return {
         ...prv,
@@ -114,7 +110,6 @@ export const App = () => {
       setShowImages(true);
   }
   
-  // console.log(showImages, userImages, searchResults);
 
   const handleSave = async (url: string, byteSize: number, title: string) => {
     console.log(url, byteSize, title);
@@ -139,6 +134,30 @@ export const App = () => {
         }
       });
       
+    } catch (error) {
+      console.log(error, "error");
+    }
+  }
+
+  const handleDelete = async (id: number) => { 
+    try {
+      const userImages = JSON.parse(Cookie.get('userImages') || '{}');
+      const res = await axios.delete(import.meta.env.VITE_API_URL + `/${userImages.id}/${id}`, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      Cookie.set('userImages', JSON.stringify({
+        user: res.data.user,
+        id: res.data.id,
+        favoriteImages: res.data.favoriteImages
+      }));
+      setUserImages((prv) => {
+        return {
+          ...prv,
+          favoriteImages: res.data.favoriteImages
+        }
+      });
     } catch (error) {
       console.log(error, "error");
     }
@@ -190,6 +209,9 @@ export const App = () => {
               <div key={index} className="img-content">
                 <img src={image.url} alt="Favorite Image" className="img" />
                 <p>{image.byteSize} bytes</p>
+                <button onClick={() => {
+                  handleDelete(image.id);
+                }}>delete</button>
               </div>
             ))}
           </> : !userImages && <>
