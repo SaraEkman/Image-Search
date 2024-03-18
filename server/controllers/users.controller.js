@@ -14,33 +14,11 @@ const addUser = async (req, res, next) => {
 
         if (existingUser) {
             console.log('User already exists');
-            if (req.body.favoriteImages) {
-                const favoriteImagesWithIds = req.body.favoriteImages.map(image => ({
-                    ...image,
-                    id: generateRandomId(),
-                }));
-                existingUser.favoriteImages = [...existingUser.favoriteImages, ...favoriteImagesWithIds];
-            }
-            return res.status(200).json(
-                {
-                    user: existingUser.user,
-                    id: existingUser.id,
-                    favoriteImages: existingUser.favoriteImages,
-                }
-            );
+            return res.status(200).json(existingUser);
         }
 
         const userId = generateRandomId();
-
-        if (!req.body.favoriteImages) {
-            req.body.favoriteImages = [];
-        }
-        const favoriteImagesWithIds = req.body.favoriteImages.map(image => ({
-            ...image,
-            id: generateRandomId(),
-        }));
-
-        const newUser = { ...req.body, id: userId, favoriteImages: favoriteImagesWithIds };
+        const newUser = { ...req.body, id: userId, favoriteImages: [] };
 
         users.push(newUser);
 

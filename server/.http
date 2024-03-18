@@ -3,14 +3,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "user": "SaraEkman",
-    "favoriteImages": [
-        {
-            "title": "Image one",
-            "byteSize": "1234",
-            "url": "https://image-processor-storage.s3.us-west-2.amazonaws.com/images/3cf61c1011912a2173ea4dfa260f1108/halo-of-neon-ring-illuminated-in-the-stunning-landscape-of-yosemite.jpg"
-        }
-    ]
+    "user": "Sarita Sharma"
 }
 
 
@@ -19,7 +12,7 @@ GET http://localhost:3000/users/619
 
 
 ###
-PUT http://localhost:3000/users/3194
+PUT http://localhost:3000/users/1866
 Content-Type: application/json
     
   {
