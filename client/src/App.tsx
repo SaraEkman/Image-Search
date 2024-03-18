@@ -166,10 +166,10 @@ export const App = () => {
   return (
     <div>
       {isAuthenticated ? <>
-        <LogoutButton />
         <input type="text" onChange={handleChange} />
         <button onClick={handleSearch}>Search</button>
         <button onClick={handleFavoriteImages}>Show favorite images</button>
+        <LogoutButton />
 
         {searchResults && !showImages && ((searchResults?.items?.length) ?? 0) > 0 ? (
           <div className="img-container">
@@ -191,7 +191,7 @@ export const App = () => {
             {searchResults?.items?.map((result, index) => (
               <div className="img-content" key={index}>
                 <p>{result.title}</p>
-                <img src={result.link} alt="Search Result" className="img" />
+               <div className="img-box"> <img src={result.link} alt="Search Result" className="img" /></div>
                 <p>{result.image.byteSize} bytes</p>
                 <button onClick={() => {
                   handleSave(result.link, result.image.byteSize, result.title);
@@ -207,7 +207,7 @@ export const App = () => {
           {showImages && (userImages.favoriteImages.length > 0) ? <>
             {userImages.favoriteImages.map((image, index) => (
               <div key={index} className="img-content">
-                <img src={image.url} alt="Favorite Image" className="img" />
+                <div className="img-box"><img src={image.url} alt="Favorite Image" className="img" /></div>
                 <p>{image.byteSize} bytes</p>
                 <button onClick={() => {
                   handleDelete(image.id);
