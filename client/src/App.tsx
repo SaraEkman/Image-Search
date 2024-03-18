@@ -60,11 +60,7 @@ export const App = () => {
   };
 
   useEffect(() => {
-    console.log(showImages, userImages);
-  }, [showImages]);
-
-  useEffect(() => {
-    const getUser = async () => { 
+    const checkUser = async () => { 
       try {
         const res = await axios.post(import.meta.env.VITE_API_URL, JSON.stringify({ user: user?.nickname || user?.name }), {
           headers: {
@@ -90,9 +86,9 @@ export const App = () => {
       }
     }
     if (isAuthenticated) {
-      getUser();
+      checkUser();
     }
-  }, [])
+  }, [isAuthenticated])
   
   console.log(userImages);
 
@@ -124,11 +120,8 @@ export const App = () => {
     console.log(url, byteSize, title);
     try {
      const userImages = JSON.parse(Cookie.get('userImages') || '{}');
-      const res = await axios.post(import.meta.env.VITE_API_URL, JSON.stringify({
-        user: userImages.user,
-        id: userImages.id,
-        favoriteImages: [
-          {title,byteSize,url}]}),{
+      const res = await axios.post(import.meta.env.VITE_API_URL + `/${userImages.id}`, JSON.stringify(
+        { title, byteSize, url}),{
           headers: {
             'Content-Type': 'application/json'
         }
