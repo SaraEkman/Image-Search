@@ -90,6 +90,7 @@ export const App = () => {
   }, [isAuthenticated])
   
   const handleSearch = async () => {
+    if (!searchTerm) return;
     setShowImages(false);
     console.log(searchTerm);
     const res = await fetch(
@@ -133,6 +134,14 @@ export const App = () => {
           favoriteImages: res.data.favoriteImages
         }
       });
+
+      setSearchResults((prv) => {
+        const updatedItems = prv.items?.filter((item) => item.link !== url);
+        return {
+          ...prv,
+          items: updatedItems,
+        };
+      });
       
     } catch (error) {
       console.log(error, "error");
@@ -166,9 +175,17 @@ export const App = () => {
   return (
     <div>
       {isAuthenticated ? <>
-        <input type="text" onChange={handleChange} />
-        <button onClick={handleSearch}>Search</button>
-        <button onClick={handleFavoriteImages}>Show favorite images</button>
+        <input type="text" onChange={handleChange} className="
+        m-4 px-4 py-2 border border-gray-300
+        rounded-md focus:outline-none
+        focus:ring-2 focus:ring-indigo-500 focus:border-transparent
+        "/>
+        <button onClick={handleSearch} className="
+        px-4 py-2 bg-indigo-600 text-white mL-4
+        ">Search</button>
+        <button onClick={handleFavoriteImages} className="
+        px-4 py-2 bg-indigo-600 text-white m-4
+        ">Show favorite images</button>
         <LogoutButton />
 
         {searchResults && !showImages && ((searchResults?.items?.length) ?? 0) > 0 ? (
@@ -200,7 +217,7 @@ export const App = () => {
             ))}
           </div>
         ) : !showImages && (
-          <p>No results found</p>
+          <p className="mt-6 text-lg leading-8 text-gray-300">No results found</p>
         )}
 
         <div className="img-container">
@@ -224,7 +241,7 @@ export const App = () => {
         {
           isLoading && <p>Loading...</p>
         }
-        <p>Loga in to see your favorite images</p>
+          <p>Loga in to see your favorite images</p>
       </>}
     </div>
   );
