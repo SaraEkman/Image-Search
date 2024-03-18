@@ -1,19 +1,8 @@
 const fs = require('fs').promises;
 const path = require('path');
 const { generateRandomId } = require('../helper');
+const { error } = require('console');
 const DATA_FILE = path.join(__dirname, '..', 'users.json');
-
-
-const getUsers = async (req, res, next) => {
-    try {
-        const data = await fs.readFile(DATA_FILE, "utf8");
-        const object = JSON.parse(data);
-        res.status(200).json(object);
-    } catch (error) {
-        console.error('Error reading the file:', error);
-        res.status(500).send('Error reading the user file');
-    }
-};
 
 const addUser = async (req, res, next) => {
     console.log(req.body);
@@ -138,4 +127,4 @@ const deleteImageFromUser = async (req, res, next) => {
     }
 };
 
-module.exports = { getUsers, addUser, getFavoriteImagesById, addImagesToUser, deleteImageFromUser };
+module.exports = { addUser, getFavoriteImagesById, addImagesToUser, deleteImageFromUser };
