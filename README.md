@@ -1,6 +1,6 @@
 # Project Title: Image Search with Auth0 and Google Custom Search
 ## Project Description
-This project is a simple web application that allows users to search for images on the internet. Users can search for images by entering a search term in the search field and pressing the search button. The web application will then display a list of images that match the search term. Users can also click on an image to see a larger version of the image. The web application uses Auth0 to handle authentication and Google Custom Search to fetch images from the internet.
+This project is a full-stack application that enables image search using the Google Custom Search API. Users can log in with their Google or GitHub accounts via Auth0, search for images, see search results with a maximum of 10 images, and save favorite images in a personal list. The application is built with React and TypeScript on the client side, and Node.js with Express on the server side.
 
 ## Features
 - Authentication: Users can log in using their Google or GitHub accounts through Auth0.
